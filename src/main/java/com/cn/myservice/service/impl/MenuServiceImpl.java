@@ -7,6 +7,7 @@ import com.cn.myservice.service.IMenuService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -24,6 +25,7 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements IM
 
     @Override
     public R<List<Menu>> getAllMenuTree() {
+        List<String> arr = new ArrayList<>();
         List<Menu> menuList = this.list();
         //获取父节点
         List<Menu> collect = menuList.stream().filter(m -> m.getPreMenuCode().equals("M00")).peek(
