@@ -6,10 +6,7 @@ import com.cn.myservice.service.IMarkdownService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -30,16 +27,16 @@ public class MarkDownController {
     @Resource
     private IMarkdownService markdownService;
 
-    @GetMapping("/getMD")
+    @GetMapping("/getMD/{id}")
     @CrossOrigin
-    public R<String> getResource() {
-       return R.success(markdownService.getById(1233444).getMddesc());
+    public R<String> getResource(@PathVariable Integer id) {
+       return R.success(markdownService.getById(id).getMddesc());
     }
 
-    @GetMapping("/getEnMD")
+    @GetMapping("/getEnMD/{id}")
     @CrossOrigin
-    public R<String> getEnResource() {
-        return R.success(markdownService.getById(1233444).getMddescEn());
+    public R<String> getEnResource(@PathVariable Integer id) {
+        return R.success(markdownService.getById(id).getMddescEn());
     }
 
 }
