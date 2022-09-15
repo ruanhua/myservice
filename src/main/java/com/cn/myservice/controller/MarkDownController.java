@@ -28,13 +28,11 @@ public class MarkDownController {
     private IMarkdownService markdownService;
 
     @GetMapping("/getMD/{id}")
-    @CrossOrigin
     public R<String> getResource(@PathVariable Integer id) {
        return R.success(markdownService.getById(id).getMddesc());
     }
 
     @GetMapping("/getEnMD/{id}")
-    @CrossOrigin
     public R<String> getEnResource(@PathVariable Integer id) {
         return R.success(markdownService.getById(id).getMddescEn());
     }
